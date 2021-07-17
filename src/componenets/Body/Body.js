@@ -1,35 +1,41 @@
-import React from 'react';
-import Card from "../Card";
-import Carousel from './Carousel/Carousel';
-import { useEffect, useState, useCallback } from 'react';
+import React from "react";
+import Carousel from "./Carousel/Carousel";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ShowsGrid from "../ShowsGrid/ShowsGrid";
 
 export default function Body() {
-    const [api, setApi] = useState([]);
-    const [carouselMovies, setCarouselMovies] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+  const [shows, setShows] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        let endpoint = `https://api.tvmaze.com/shows?page=${currentPage}`
-        fetch(endpoint)
-            .then(res => res.json())
-            .then(res => {
-                const data = res;
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
-                setApi(data.splice(0, 5));
-            });
+  async function fetchData() {
+    setLoading(true);
+    const data = await axios.get("/shows", { params: { page: currentPage } });
+    setShows([...shows, ...data.data]);
+    setTotalItems(shows.length + data.data.length);
+    setLoading(false);
+  }
 
-    }, [api, currentPage]);
+  function fetchMore() {
+    setCurrentPage(currentPage + 1);
+  }
 
-    useCallback(() => {
-        setCarouselMovies(api.splice(0, 3))
-    }, [carouselMovies]);
-    return (
-        <div>
-            <Carousel movies={carouselMovies} />
-            {api.map((film) => {
-                return <Card movie={film} key={film.id} />
-            })}
-            <button onClick={() => setCurrentPage((prev) => prev + 1)}>Load more</button>
-        </div>
-    )
+  return (
+    <div>
+      <Carousel movies={shows.slice(0, 3)} />
+      <ShowsGrid
+        loading={loading}
+        shows={shows}
+        totalItems={totalItems}
+        fetchMore={fetchMore}
+      />
+    </div>
+  );
 }
