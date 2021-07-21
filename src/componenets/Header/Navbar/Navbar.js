@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./Navbar.scss";
 
 export default function Navbar() {
     return (
-        <>
-            <nav className="navbar  navbar-light">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><img src="/images/epam.svg" /></a>
+        <div>
+            <nav className="navbar navbar-light shadow-sm">
+                <div className="container">
+                    <Link className="navbar-brand" to="/"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Player-Video-icon.png" /></Link>
+                    <div>
+                        <button className="btn btn-primary me-2">Sign In</button>
+                        <button className="btn btn-outline-primary">Sign Up</button>
+                    </div>
                 </div>
             </nav>
-        </>
+        </div>
     )
 }
