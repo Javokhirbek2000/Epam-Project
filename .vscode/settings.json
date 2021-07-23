@@ -1,5 +1,6 @@
 {
   "files.associations": {
     "*.js": "javascriptreact"
-  }
+  },
+  "material-icon-theme.activeIconPack": "react"
 }

@@ -3,21 +3,19 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 .navbar {
     .container-fluid {
          padding: 0 !important;
          margin: 0 !important;
     }
-    background-color: #fff;
 }
 
 .navbar-brand {
     margin-left: 10px;
     img {
-       height: 50px;
-       width: 100px;
+       height: 40px;
+       width: 40px;
     }
 }
 
