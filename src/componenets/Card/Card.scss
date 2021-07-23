@@ -1,0 +1,31 @@
+.card {
+  position: relative;
+  .like-button,
+  .recommend-button {
+    top: 0;
+    right: 0;
+    position: absolute;
+    border: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .recommend-button {
+    left: 0;
+    right: auto;
+    & > button {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0.24rem;
+    }
+  }
+}
+
+.card-body {
+  transition: 0.3s ease;
+  &:hover {
+    background-color: aliceblue;
+  }
+}

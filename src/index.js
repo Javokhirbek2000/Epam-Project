@@ -2,16 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import axios from "axios";
-import { BASE_URL } from "./config";
-import { Auth0Provider } from " @auth0/auth0-react";
+import { BASE_URL, CLIENT_ID, DOMAIN } from "./config";
+import { Auth0Provider } from "@auth0/auth0-react";
+
+import "./index.scss";
 
 axios.defaults.baseURL = BASE_URL;
 
 ReactDOM.render(
   <Auth0Provider
-    domain="dev-8hid7zkk.us.auth0.com"
-    clientId="plxDLxLi3SkLgfA4Vu0FCGTDxiWaQ2b4"
-    redirectUri={"https://localhost:3000/"}>
+    domain={DOMAIN}
+    clientId={CLIENT_ID}
+    redirectUri={window.location.origin}>
     <React.StrictMode>
       <App />
     </React.StrictMode>

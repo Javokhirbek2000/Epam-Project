@@ -1,8 +1,10 @@
 .movie-image {
-    height: 200px;
-    width:400px;
+  height: 200px;
+  width: 400px;
 }
 
-.movie-text{
-    height: 400px;
+.movie-text {
+  height: calc(100vh - 75px);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

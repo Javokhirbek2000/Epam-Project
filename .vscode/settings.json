@@ -2,5 +2,6 @@
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "material-icon-theme.activeIconPack": "react"
+  "material-icon-theme.activeIconPack": "react",
+  "editor.tabSize": 2
 }

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { ITEMS_PER_PAGE } from "../../config";
-import Card from "../Card";
+import Card from "../Card/Card";
 import Spinner from "../helpers/Spinner";
 
-export default function ShowsGrid({ shows, totalItems, fetchMore, loading, hasLoadMoreButton = true }) {
+export default function ShowsGrid({
+  shows,
+  totalItems,
+  fetchMore,
+  loading,
+  hasLoadMoreButton = true,
+}) {
   const [innerPage, setInnerPage] = useState(1);
 
   function handleLoadMore() {
@@ -17,16 +23,25 @@ export default function ShowsGrid({ shows, totalItems, fetchMore, loading, hasLo
       <div className="row">
         {shows.slice(0, ITEMS_PER_PAGE * innerPage).map((film, i) => (
           <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={film.id}>
-            <Card name={film.name} image={film.image} genres={film.genres} id={film.id} />
+            <Card
+              name={film.name}
+              image={film.image}
+              genres={film.genres}
+              id={film.id}
+            />
           </div>
         ))}
       </div>
 
-      {
-        hasLoadMoreButton && loading ? <Spinner /> : <button className="btn btn-primary btn-lg" onClick={handleLoadMore}>
+      {hasLoadMoreButton && loading ? (
+        <Spinner />
+      ) : (
+        <button
+          className="btn btn-primary btn-lg mb-3"
+          onClick={handleLoadMore}>
           Load More
         </button>
-      }
+      )}
     </div>
   );
 }

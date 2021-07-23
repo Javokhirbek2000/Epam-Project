@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LikeButton from "../helpers/LikeButton";
+import RecommendButton from "../helpers/RecommendButton";
+
+import "./Card.scss";
 
 export default function Card({ name, image, genres, id }) {
   return (
-    <Link
-      to={`/movie/${id}`}
-      className="card w-100 d-block text-decoration-none text-dark">
+    <div className="card w-100">
+      <LikeButton show={{ name, image, genres, id }} className="like-button" />
+      <RecommendButton id={id} className="recommend-button" />
       <img
         src={
           image !== null
@@ -17,14 +21,16 @@ export default function Card({ name, image, genres, id }) {
         alt={name}
         height={"450px"}
       />
-      <div className="card-body">
+      <Link
+        to={`/movie/${id}`}
+        className="card-body d-block text-decoration-none text-dark">
         <h5 className="card-title">{name}</h5>
         {genres.map((genre, index) => (
           <span key={index} className="badge bg-secondary me-1">
             {genre}
           </span>
         ))}
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
