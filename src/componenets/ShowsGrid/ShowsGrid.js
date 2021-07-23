@@ -5,6 +5,7 @@ import Spinner from "../helpers/Spinner";
 
 export default function ShowsGrid({ shows, totalItems, fetchMore, loading, hasLoadMoreButton = true }) {
   const [innerPage, setInnerPage] = useState(1);
+
   function handleLoadMore() {
     if (innerPage * ITEMS_PER_PAGE >= totalItems) {
       fetchMore();
@@ -20,6 +21,7 @@ export default function ShowsGrid({ shows, totalItems, fetchMore, loading, hasLo
           </div>
         ))}
       </div>
+
       {
         hasLoadMoreButton && loading ? <Spinner /> : <button className="btn btn-primary btn-lg" onClick={handleLoadMore}>
           Load More

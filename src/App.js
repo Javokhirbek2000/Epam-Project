@@ -1,9 +1,10 @@
 import './App.css';
-import Header from "./componenets/Header/Header";
 import Home from "./componenets/Home/Home";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import SearchResults from "./componenets/SearchResults/SearchResults";
 import Movie from './componenets/Movie/Movie';
+import Header from "./componenets/Header/Header";
+import { Auth0Provider } from " @auth0/auth0-react";
 
 function App() {
 
