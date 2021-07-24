@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { send as sendEmail } from "emailjs-com";
 import { useAuth0 } from "@auth0/auth0-react";
-
 import "./RecommendButton.scss";
 
 export default function RecommendButton({ id, className }) {
+  const { isAuthenticated } = useAuth0();
   const { user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -13,20 +13,23 @@ export default function RecommendButton({ id, className }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    setLoading(true);
-    try {
-      const response = await sendEmail("service_lg0s8pq", "template_qmyf4rx", {
-        to_email: email,
-        message: `Follow the link below ${window.location.origin}/movie/${id}`,
-        from_name: user.given_name,
-      });
-      console.log(response.status);
-      setBtnState({ type: "success", text: "Sent" });
-    } catch (error) {
-      console.log(error);
-      setBtnState({ type: "danger", text: "Error" });
+    if (!isAuthenticated) {
+      return alert("Login to continue!")
+    } else {
+      setLoading(true);
+      try {
+        const response = await sendEmail("service_jdbp8wt", "template_mlzmdfz", {
+          to_email: email,
+          message: `Follow the link below ${window.location.origin}/movie/${id}`,
+          from_name: user.given_name,
+        });
+        console.log(response.status);
+        setBtnState({ type: "success", text: "Sent" });
+      } catch (error) {
+        setBtnState({ type: "danger", text: "Error" });
+      }
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   useEffect(() => {
@@ -51,11 +54,11 @@ export default function RecommendButton({ id, className }) {
             onChange={(evt) => setEmail(evt.target.value)}
           />
           <button
-            class={`btn btn-${btnState.type} input-group-append`}
+            className={`btn btn-${btnState.type} input-group-append`}
             type="submit"
             disabled={btnState.type !== "primary" || loading}
             id="send-btn">
-            {loading ? "Loading" : btnState.text}
+            {loading ? "Sending..." : btnState.text}
           </button>
         </div>
       </form>

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import LikeButton from "../helpers/LikeButton";
+import RecommendButton from "../helpers/RecommendButton";
 import Spinner from "../helpers/Spinner";
 import "./Movie.scss";
 
@@ -9,6 +11,7 @@ export default function Movie() {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [images, setImages] = useState([]);
+  const [actors, setActors] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -18,6 +21,8 @@ export default function Movie() {
       setMovie(data.data);
       const images = await axios.get(`/shows/${id}/images`);
       setImages(images.data);
+      const actors = await axios.get(`/shows/${id}/cast`);
+      setActors(actors.data);
       setLoading(false);
     };
     fetchData();
@@ -64,7 +69,12 @@ export default function Movie() {
           </div>
         </div>
       </div>
+      <div className="container d-flex justify-content-evenly fs-4">
+        <LikeButton show={movie} className="like-btn" />
+        <RecommendButton id={movie.id} className="recommend-btn" />
+      </div>
       <div className="container-fluid text-center my-3">
+        <h1 className="text-center">Images</h1>
         {images
           .filter((image) => image.type === "poster")
           .map((image, i) => (
@@ -75,6 +85,19 @@ export default function Movie() {
               src={`${image.resolutions?.medium?.url}`}
             />
           ))}
+      </div>
+      <div className="container-fluid text-center my-3">
+        <h1 className="text-center">Actors</h1>
+        <div className="d-flex justify-content-evenly flex-wrap">
+          {actors.map((actor, index) => {
+            return <div className="mx-3" key={index}>
+              <div><img src={actor.person.image.medium} alt={actor.person.name} /></div>
+              <p><span className="badge bg-secondary">{actor.character.name}</span></p>
+              <h4>{actor.person.name}</h4>
+              <p>{actor.person.birthday}</p>
+            </div>
+          })}
+        </div>
       </div>
       <div className="bg-dark">
         <div className="container">
