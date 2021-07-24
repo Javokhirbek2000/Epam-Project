@@ -28,7 +28,7 @@ export default function Movie() {
     fetchData();
   }, [id]);
 
-  if (loading) return <Spinner />;
+  if (loading) return <Spinner className="mt-5" />;
 
   const url = images.filter((image) => image.type === "background")[0]
     ?.resolutions?.original.url;
@@ -69,7 +69,7 @@ export default function Movie() {
           </div>
         </div>
       </div>
-      <div className="container d-flex justify-content-evenly fs-4">
+      <div className="container d-flex justify-content-start fs-4">
         <LikeButton show={movie} className="like-btn" />
         <RecommendButton id={movie.id} className="recommend-btn" />
       </div>
@@ -116,7 +116,7 @@ export default function Movie() {
               <a
                 className="btn btn-outline-light text-decoration-none"
                 target="_blank"
-                href={movie.officialSite}
+                to={movie.officialSite}
                 rel="noreferrer">
                 Official Site
               </a>

@@ -5,6 +5,7 @@ import Movie from './componenets/Movie/Movie';
 import { init } from "emailjs-com";
 import { useEffect } from "react";
 import Header from "./componenets/Header/Header";
+import Favorites from "./componenets/Favorites/Favorites";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/search/:query" component={SearchResults} />
         <Route path="/movie/:id" component={Movie} />
+        <Route path="/favorites" component={Favorites} />
       </Switch>
     </BrowserRouter>
   );

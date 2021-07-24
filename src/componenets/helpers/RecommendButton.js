@@ -47,7 +47,6 @@ export default function RecommendButton({ id, className }) {
         <div className="input-group">
           <input
             type="email"
-            autoComplete="email"
             className="form-control"
             placeholder="Email"
             aria-describedby="send-btn"

@@ -22,7 +22,7 @@ export default function SearchResults() {
         fetchData();
     }, [query]);
 
-    if (isLoading) return <Spinner />;
+    if (isLoading) return <Spinner className="mt-5" />;
 
     return (
         <>

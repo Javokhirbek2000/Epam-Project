@@ -4,33 +4,33 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import "./Header.scss";
 import Spinner from "../helpers/Spinner";
+import { useFavorites } from "../../hooks/useLocalStorage";
 
 export default function Header() {
   const { user, loginWithRedirect, isAuthenticated, isLoading, logout } =
     useAuth0();
 
-  console.log(user);
-
   return (
     <div>
       <nav className="navbar navbar-light shadow-sm">
-        <div className="container">
+        <div className="container d-flex justify-content-space-between flex-wrap">
           <Link className="navbar-brand" to="/">
             <img
               src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Player-Video-icon.png"
               alt="Poster"
             />
           </Link>
-          <div className="text-dark fs-1 fw-bolder">Movies</div>
+          <div className="text-dark fs-1 fw-bolder m-auto">Movies</div>
           <div>
             {isLoading ? (
-              <Spinner />
+              <Spinner className="" />
             ) : isAuthenticated ? (
-              <>
+              <div className="m-auto">
+                <Link to="/favorites" className="btn btn-primary ml-3 favorite-btn">Favorites</Link>
                 <img
                   width="50"
                   height="50"
-                  className="rounded-circle me-2"
+                  className="rounded-circle mx-2"
                   src={user.picture}
                   alt={user.given_name}
                 />
@@ -39,7 +39,7 @@ export default function Header() {
                   onClick={() => logout()}>
                   Sign Out
                 </button>
-              </>
+              </div>
             ) : (
               <button
                 className="btn btn-primary me-2"
