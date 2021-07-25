@@ -69,7 +69,7 @@ export default function Movie() {
           </div>
         </div>
       </div>
-      <div className="container d-flex justify-content-start fs-4">
+      <div className="container d-flex justify-content-start fs-4 btn-group">
         <LikeButton show={movie} className="like-btn" />
         <RecommendButton id={movie.id} className="recommend-btn" />
       </div>

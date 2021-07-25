@@ -4,11 +4,13 @@
 }
 
 .movie-text {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 50px);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.btn-group {
+  position: relative;
 .recommend-btn{
     top: calc(100vh-610px);
     right: 15%;
@@ -23,4 +25,5 @@
     position: absolute;
     border: none;
     margin-top: 2px;
+}
 }
