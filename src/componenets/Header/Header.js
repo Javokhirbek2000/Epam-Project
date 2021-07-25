@@ -4,7 +4,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import "./Header.scss";
 import Spinner from "../helpers/Spinner";
-import { useFavorites } from "../../hooks/useLocalStorage";
 
 export default function Header() {
   const { user, loginWithRedirect, isAuthenticated, isLoading, logout } =

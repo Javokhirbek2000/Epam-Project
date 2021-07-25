@@ -116,7 +116,7 @@ export default function Movie() {
               <a
                 className="btn btn-outline-light text-decoration-none"
                 target="_blank"
-                to={movie.officialSite}
+                href={movie.officialSite}
                 rel="noreferrer">
                 Official Site
               </a>

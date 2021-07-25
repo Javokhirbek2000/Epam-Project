@@ -3,7 +3,7 @@ import { useFavorites } from '../../hooks/useLocalStorage';
 import Card from "../../componenets/Card/Card";
 
 export default function Favorites() {
-  const [favorites, setFavorites] = useFavorites();
+  const [favorites] = useFavorites();
 
   return (
     <>

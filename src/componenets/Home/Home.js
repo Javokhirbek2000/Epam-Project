@@ -12,6 +12,7 @@ export default function Body() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   async function fetchData() {
