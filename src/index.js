@@ -12,7 +12,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={DOMAIN}
     clientId={CLIENT_ID}
-    redirectUri="https://elegant-stonebraker-0fa0ff.netlify.apps">
+    redirectUri="https://excellent-movie.netlify.app, https://localhost:3000">
     <React.StrictMode>
       <App />
     </React.StrictMode>
