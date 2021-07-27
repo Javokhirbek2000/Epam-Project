@@ -10,6 +10,7 @@ export default function Card({ name, image, genres, id }) {
     <div className="card">
       <LikeButton show={{ name, image, genres, id }} className="like-button" />
       <RecommendButton id={id} className="recommend-button" />
+
       <img
         src={
           image !== null

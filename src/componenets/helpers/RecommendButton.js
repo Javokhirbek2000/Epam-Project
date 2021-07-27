@@ -43,7 +43,7 @@ export default function RecommendButton({ id, className }) {
       </button>
       <form
         onSubmit={handleSubmit}
-        className={`send-email-form ${isOpen ? "active" : ""}`}>
+        className={`send-email-form m-sm-6 ${isOpen ? "active" : ""}`}>
         <div className="input-group">
           <input
             type="email"
