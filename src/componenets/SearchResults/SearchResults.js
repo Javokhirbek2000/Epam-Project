@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import Header from '../Header/Header';
 import SearchBar from '../Header/SearchBar/SearchBar';
 import Spinner from "../helpers/Spinner";
 import ShowsGrid from '../ShowsGrid/ShowsGrid';
@@ -26,6 +27,7 @@ export default function SearchResults() {
 
     return (
         <>
+            <Header />
             <SearchBar />
             <h1 className="text-center mb-3">Search Results for {query}</h1>
             <ShowsGrid hasLoadMoreButton={false} shows={shows.map(show => show.show)} />

@@ -1,12 +1,14 @@
 import React from 'react'
 import { useFavorites } from '../../hooks/useLocalStorage';
 import Card from "../../componenets/Card/Card";
+import Header from '../Header/Header';
 
 export default function Favorites() {
   const [favorites] = useFavorites();
 
   return (
     <>
+      <Header />
       <h1 className="text-center my-2">Your Favorites</h1>
       <div className="container">
         <div className="row">

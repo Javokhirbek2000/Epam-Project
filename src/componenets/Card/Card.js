@@ -15,7 +15,7 @@ export default function Card({ name, image, genres, id }) {
         src={
           image !== null
             ? image.medium
-            : "https://t3.ftcdn.net/jpg/00/36/94/26/240_F_36942622_9SUXpSuE5JlfxLFKB1jHu5Z07eVIWQ2W.jpg"
+            : "../../images/noimage.jpg"
         }
         className="card-img-top w-100"
         style={{ objectFit: "cover" }}

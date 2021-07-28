@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowsGrid from "../ShowsGrid/ShowsGrid";
 import SearchBar from "../Header/SearchBar/SearchBar";
-
+import Header from "../Header/Header";
 export default function Body() {
   const [shows, setShows] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -29,6 +29,7 @@ export default function Body() {
 
   return (
     <>
+      <Header />
       <SearchBar />
       <h1 className="text-center mb-3">Popular Movies</h1>
       <ShowsGrid

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../Header/Header";
 import LikeButton from "../helpers/LikeButton";
 import RecommendButton from "../helpers/RecommendButton";
 import Spinner from "../helpers/Spinner";
@@ -35,6 +36,7 @@ export default function Movie() {
 
   return (
     <>
+      <Header />
       <div
         className="movie-text d-flex flex-column justify-content-center"
         style={{
