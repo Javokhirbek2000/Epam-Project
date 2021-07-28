@@ -4,6 +4,7 @@ import axios from "axios";
 import ShowsGrid from "../ShowsGrid/ShowsGrid";
 import SearchBar from "../Header/SearchBar/SearchBar";
 import Header from "../Header/Header";
+
 export default function Body() {
   const [shows, setShows] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
