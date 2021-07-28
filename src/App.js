@@ -4,7 +4,6 @@ import SearchResults from "./componenets/SearchResults/SearchResults";
 import Movie from './componenets/Movie/Movie';
 import { init } from "emailjs-com";
 import { useEffect } from "react";
-import Header from "./componenets/Header/Header";
 import Favorites from "./componenets/Favorites/Favorites";
 import NotFound from "./componenets/helpers/NotFound";
 
@@ -16,6 +15,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/search/:query" component={SearchResults} />
