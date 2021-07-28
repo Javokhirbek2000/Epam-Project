@@ -19,7 +19,7 @@ export default function Header() {
               alt="Poster"
             />
           </Link>
-          <div className="text-dark fs-1 fw-bolder m-auto">Movies</div>
+          <div className="text-dark fs-1 fw-bolder m-auto">Excellent Movies</div>
           <div>
             {isLoading ? (
               <Spinner className="" />
